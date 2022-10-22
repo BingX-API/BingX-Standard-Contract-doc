@@ -1,0 +1,1 @@
+#BingX-Standard-Contract-doc
