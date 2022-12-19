@@ -9,6 +9,7 @@
 - [Standard contract interface](#standard-contract-interface)
     - [Position](#position)
     - [Order history](#order-history)
+    - [Query standard contract balance](#Query-standard-contract-balance)
 
 <!-- TOC -->
 
@@ -210,3 +211,49 @@ example:
     ]
 }
 ````
+
+
+## Query standard contract balance
+
+**interface**
+```
+    GET /openApi/contract/v1/balance
+```
+
+**parameter**
+
+none
+
+**response**
+
+| parameter name                 | type     | Remark         |
+| ------                |--------|------------|    
+| asset                | string | assets         |
+| balance         | string | total balance        |
+| crossWalletBalance              | string | Cross position balance       |
+| crossUnPnl      | string | Unrealized profit and loss of cross positions  |
+| availableBalance              | string | Order available balance     |
+| maxWithdrawAmount            | string | Maximum transferable balance    |
+| marginAvailable          | bool   | Can it be used as a joint bond |
+| updateTime           | number | timestamp        |
+
+example：
+
+```
+{
+    "code": 0,
+    "timestamp": 1666421703835,
+    "data": [
+        {
+            "asset": "USDT",        // assets
+            "balance": "122607.35137903",   // total balance
+            "crossWalletBalance": "23.72469206", // Cross position balance
+            "crossUnPnl": "0.00000000"  // Unrealized profit and loss of cross positions
+            "availableBalance": "23.72469206",       // Order available balance 
+            "maxWithdrawAmount": "23.72469206",     // Maximum transferable balance
+            "marginAvailable": true,    // Can it be used as a joint bond
+            "updateTime": 1617939110373
+        }
+    ]
+}
+```
